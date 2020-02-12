@@ -6,12 +6,15 @@ const yargs = require('yargs')
 //Creating Add Command
 yargs.command('read','read a note',
     function(yargs) {
-       return yargs.options('title',
+       return yargs
+       .options('title',
        {describe: 'Note title', type: 'string', demandOption: true})
+       .options('attribute',
+       {describe: 'Note attribute you wish to see', type: 'string'})
     },
     function(argv) {
         console.log('Reading a Note!')    
-        notesUtil.readNotes(argv.title)
+        notesUtil.readNotes(argv.title, argv.attribute)
     }
 )
 

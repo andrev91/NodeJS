@@ -11,10 +11,10 @@ const addNotes = function(title, body) {
     fileModule.writeFileSync('../notes/' + title + '.json', JSON.stringify(jsonData))
 }
 
-const readNotes = function(title) {
+const readNotes = function(title, attribute = '') {
     try {
         file = getJsonFile(title)
-        console.log(file)
+        console.log(attribute.length === 0 ? file : attribute + ': ' + file["" + attribute + ""])
     } catch (e) {
         console.log('Unable to retrieve note!')    
     }
