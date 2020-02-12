@@ -11,9 +11,28 @@ const addNotes = function(title, body) {
     fileModule.writeFileSync('../notes/' + title + '.json', JSON.stringify(jsonData))
 }
 
+const readNotes = function(title) {
+    try {
+        file = getJsonFile(title)
+        console.log(file)
+    } catch (e) {
+        console.log('Unable to retrieve note!')    
+    }
+}
+
+const getJsonFile = function(title) {
+    const data = fileModule.readFileSync('../notes/' + title + '.json')
+    return JSON.parse(data)
+}
+
+const saveNotes = function(notes) {
+    fileModule.writeFileSync('../notes/' + title + '.json', JSON.stringify(notes))
+}
+
 module.exports = {
     'getNotes' : getNotes,
-    'addNotes' : addNotes
+    'addNotes' : addNotes,
+    'readNotes' : readNotes
 }
 
 
